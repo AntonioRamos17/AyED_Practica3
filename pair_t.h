@@ -5,7 +5,7 @@
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 3
 // ESTILO: Google C++ Style Guide
-// COMENTARIOS:
+// COMENTARIOS: Formato Doxygen
 // 
 
 #ifndef PAIRT_H_

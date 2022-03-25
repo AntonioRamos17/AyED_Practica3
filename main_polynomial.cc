@@ -5,7 +5,7 @@
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 3
 // ESTILO: Google C++ Style Guide
-// COMENTARIOS: 
+// COMENTARIOS: Formato Doxygen
 // COMPILACIÓN: g++ -g main_polynomial.cc -o main_polynomial
 // EJECUCIÓN: ./main_polynomial < data_polynomial.txt
 

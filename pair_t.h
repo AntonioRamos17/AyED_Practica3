@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Antonio Ramos Castilla
+// FECHA: 25/03/2022
+// EMAIL: alu0101480367@ull.edu.es
 // VERSION: 3.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 3

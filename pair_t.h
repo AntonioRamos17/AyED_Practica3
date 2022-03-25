@@ -37,34 +37,78 @@ template<class T> class pair_t {
   int inx_;
 };
 
-
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> pair_t<T>::pair_t() : val_(), inx_(-1) {}
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> pair_t<T>::pair_t(T val, int inx) : val_(val), inx_(inx) {}
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> pair_t<T>::~pair_t() {}
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> void pair_t<T>::set(T val, int inx) {
   val_ = val;
   inx_ = inx;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> int pair_t<T>::get_inx() const {
   return inx_;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> T pair_t<T>::get_val() const {
   return val_;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> std::istream& pair_t<T>::read(std::istream& is) {
   return is >> inx_ >> val_;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> std::ostream& pair_t<T>::write(std::ostream& os) const {
   return os << "(" << inx_ << ":" << val_ << ")";
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> std::ostream& operator<<(std::ostream& os,
 					   const pair_t<T>& p) {
   p.write(os);

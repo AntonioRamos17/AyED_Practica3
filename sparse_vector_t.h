@@ -5,7 +5,7 @@
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 3
 // ESTILO: Google C++ Style Guide
-// COMENTARIOS:
+// COMENTARIOS: Formato Doxygen
 // 
 
 #ifndef SPARSE_VECTORT_H_
@@ -59,25 +59,49 @@ class sparse_vector_t {
   // bool IsNotZero(const double, const double = EPS) const;
 };
 
-
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 bool IsNotZero(const double val, const double eps = EPS) {
   return fabs(val) > eps;
 }
 
-sparse_vector_t::sparse_vector_t(const int n) : pv_(n), nz_(0), n_(n) {}
+/**
+ * @brief 
+ * @param
+ * @return
+ */
+sparse_vector_t::sparse_vector_t(const int n) : pv_(n), nz_(0), n_(n) {
+}
 
 // FASE II
+
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 sparse_vector_t::sparse_vector_t(const vector_t<double>& v, const double eps)
     : pv_(), nz_(0), n_(0) {
   // poner el código aquí
 }
 
-// constructor de copia
+/**
+ * @brief Constructor de copia
+ * @param
+ * @return
+ */
 sparse_vector_t::sparse_vector_t(const sparse_vector_t& w) {
   *this = w;  // se invoca directamente al operator=
 }
 
-// operador de asignación
+/**
+ * @brief Operador de asignación
+ * @param
+ * @return
+ */
 sparse_vector_t& sparse_vector_t::operator=(const sparse_vector_t& w) {
   nz_ = w.get_nz();
   n_ = w.get_n();
@@ -86,35 +110,77 @@ sparse_vector_t& sparse_vector_t::operator=(const sparse_vector_t& w) {
   return *this;
 }
 
-sparse_vector_t::~sparse_vector_t() {}
+/**
+ * @brief 
+ * @param
+ * @return
+ */
+sparse_vector_t::~sparse_vector_t() {
+}
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 inline int sparse_vector_t::get_nz() const {
   return nz_;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 inline int sparse_vector_t::get_n() const {
   return n_;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 pair_double_t& sparse_vector_t::at(const int i) {
   assert(i >= 0 && i < get_nz());
   return pv_[i];
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 pair_double_t& sparse_vector_t::operator[](const int i) {
   return at(i);
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 const pair_double_t& sparse_vector_t::at(const int i) const {
   assert(i >= 0 && i < get_nz());
   return pv_[i];
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 const pair_double_t& sparse_vector_t::operator[](const int i) const {
   return at(i);
 }
 
 // E/S
+
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 void sparse_vector_t::write(std::ostream& os) const { 
   os << get_n() << "(" << get_nz() << "): [ ";
   for (int i = 0; i < get_nz(); i++)
@@ -122,6 +188,11 @@ void sparse_vector_t::write(std::ostream& os) const {
 	os << "]" << std::endl;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 std::ostream& operator<<(std::ostream& os, const sparse_vector_t& sv) {
   sv.write(os);
   return os;

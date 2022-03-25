@@ -5,7 +5,7 @@
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 3
 // ESTILO: Google C++ Style Guide
-// COMENTARIOS:
+// COMENTARIOS: Formato Doxygen
 // 
 
 #ifndef VECTORT_H_
@@ -56,18 +56,30 @@ template<class T> class vector_t {
   void destroy(void);
 };
 
-
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> vector_t<T>::vector_t(const int n) : v_(NULL), sz_(n) {
   build();
 }
 
-// constructor de copia
+/**
+ * @brief Constructor de copia
+ * @param
+ * @return
+ */
 template<class T> vector_t<T>::vector_t(const vector_t<T>& w)
     : v_(NULL), sz_(0) {
   *this = w; // se invoca directamente al operator=
 }
 
-// operador de asignación
+/**
+ * @brief Operador de asignación
+ * @param
+ * @return
+ */
 template<class T> vector_t<T>& vector_t<T>::operator=(const vector_t<T>& w) {
   resize(w.get_size());
   for (int i = 0; i < get_size(); i++)
@@ -76,10 +88,20 @@ template<class T> vector_t<T>& vector_t<T>::operator=(const vector_t<T>& w) {
   return *this;
 }
 
+/**
+ * @brief Destructor de la clase
+ * @param
+ * @return
+ */
 template<class T> vector_t<T>::~vector_t() {
   destroy();
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> void vector_t<T>::build() {
   v_ = NULL;
   if (sz_ != 0) {
@@ -88,6 +110,11 @@ template<class T> void vector_t<T>::build() {
   }
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> void vector_t<T>::destroy() {
   if (v_ != NULL) {
     delete[] v_;
@@ -96,44 +123,89 @@ template<class T> void vector_t<T>::destroy() {
   sz_ = 0;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> void vector_t<T>::resize(const int n) {
   destroy();
   sz_ = n;
   build();
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> inline T vector_t<T>::get_val(const int i) const {
   assert(i >= 0 && i < get_size());
   return v_[i];
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> inline int vector_t<T>::get_size() const {
   return sz_;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> void vector_t<T>::set_val(const int i, const T d) {
   assert(i >= 0 && i < get_size());
   v_[i] = d;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> T& vector_t<T>::at(const int i) {
   assert(i >= 0 && i < get_size());
   return v_[i];
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> T& vector_t<T>::operator[](const int i) {
   return at(i);
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> const T& vector_t<T>::at(const int i) const {
   assert(i >= 0 && i < get_size());
   return v_[i];
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> const T& vector_t<T>::operator[](const int i) const {
   return at(i);
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> void vector_t<T>::read(std::istream& is) {
   is >> sz_;
   resize(sz_);
@@ -141,6 +213,11 @@ template<class T> void vector_t<T>::read(std::istream& is) {
     is >> at(i);
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> void vector_t<T>::write(std::ostream& os) const {
   os << get_size() << ": [ ";
   for (int i = 0; i < get_size(); i++)
@@ -148,11 +225,21 @@ template<class T> void vector_t<T>::write(std::ostream& os) const {
   os << " ]" << std::endl;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> std::istream& operator>>(std::istream& is, vector_t<T>& v) {
   v.read(is);
   return is;
 }
 
+/**
+ * @brief 
+ * @param
+ * @return
+ */
 template<class T> std::ostream& operator<<(std::ostream& os,
 					   const vector_t<T>& v) {
   v.write(os);

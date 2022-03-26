@@ -16,50 +16,42 @@
 
 template<class T> class vector_t {
  public:
-  // constructores
+  // Constructores
   vector_t(const int = 0);
   vector_t(const vector_t&); // constructor de copia
-
-  // operador de asignación
+  // Sobrecarga del operador de asignación
   vector_t<T>& operator=(const vector_t<T>&);
-
-  // destructor
+  // Destructor
   ~vector_t();
-  
-  // getters
+  // Getters
   T get_val(const int) const;
   int get_size(void) const;
-  
-  // setters
+  // Setters
   void set_val(const int, const T);
-  
-  // getters-setters
+  // Getters-setters
   T& at(const int);
   T& operator[](const int);
-  
-  // getters constantes
+  // Getters constantes
   const T& at(const int) const;
   const T& operator[](const int) const;
-
-  // Redimensionado
+  // Redimensionado del vector
   void resize(const int);
-  
-  // E/S
+  // Métodos de escritura y lectura del vector
   void read(std::istream& = std::cin);
   void write(std::ostream& = std::cout) const;
-
  private:
+  // Atributos privados
   T *v_;
   int sz_;
-  
+  // Métodos privados
   void build(void);
   void destroy(void);
 };
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Constructor de la clase vector
+ * @param n
+ * @return void
  */
 template<class T> vector_t<T>::vector_t(const int n) : v_(NULL), sz_(n) {
   build();
@@ -67,8 +59,8 @@ template<class T> vector_t<T>::vector_t(const int n) : v_(NULL), sz_(n) {
 
 /**
  * @brief Constructor de copia
- * @param
- * @return
+ * @param w
+ * @return void
  */
 template<class T> vector_t<T>::vector_t(const vector_t<T>& w)
     : v_(NULL), sz_(0) {
@@ -77,8 +69,8 @@ template<class T> vector_t<T>::vector_t(const vector_t<T>& w)
 
 /**
  * @brief Operador de asignación
- * @param
- * @return
+ * @param w
+ * @return *this
  */
 template<class T> vector_t<T>& vector_t<T>::operator=(const vector_t<T>& w) {
   resize(w.get_size());
@@ -90,17 +82,17 @@ template<class T> vector_t<T>& vector_t<T>::operator=(const vector_t<T>& w) {
 
 /**
  * @brief Destructor de la clase
- * @param
- * @return
+ * @param void
+ * @return void
  */
 template<class T> vector_t<T>::~vector_t() {
   destroy();
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Metodo de construcción de vectores
+ * @param void
+ * @return void
  */
 template<class T> void vector_t<T>::build() {
   v_ = NULL;
@@ -111,9 +103,9 @@ template<class T> void vector_t<T>::build() {
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Método para eliminar vectores
+ * @param void
+ * @return void
  */
 template<class T> void vector_t<T>::destroy() {
   if (v_ != NULL) {
@@ -124,9 +116,9 @@ template<class T> void vector_t<T>::destroy() {
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Método para redimensionar vectores
+ * @param n
+ * @return void
  */
 template<class T> void vector_t<T>::resize(const int n) {
   destroy();
@@ -135,9 +127,9 @@ template<class T> void vector_t<T>::resize(const int n) {
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Getter del valor de un elemento en cierta posición (i).
+ * @param i
+ * @return v_[i]
  */
 template<class T> inline T vector_t<T>::get_val(const int i) const {
   assert(i >= 0 && i < get_size());
@@ -145,18 +137,19 @@ template<class T> inline T vector_t<T>::get_val(const int i) const {
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Getter del tamaño del vector
+ * @param void
+ * @return sz_
  */
 template<class T> inline int vector_t<T>::get_size() const {
   return sz_;
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Setter del valor de un elemento
+ * @param i
+ * @param d
+ * @return void
  */
 template<class T> void vector_t<T>::set_val(const int i, const T d) {
   assert(i >= 0 && i < get_size());
@@ -164,9 +157,9 @@ template<class T> void vector_t<T>::set_val(const int i, const T d) {
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Método para referirse a la posición de un elemento
+ * @param i
+ * @return v_[i]
  */
 template<class T> T& vector_t<T>::at(const int i) {
   assert(i >= 0 && i < get_size());
@@ -174,18 +167,18 @@ template<class T> T& vector_t<T>::at(const int i) {
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Sobrecarga del operador []
+ * @param i
+ * @return at(i)
  */
 template<class T> T& vector_t<T>::operator[](const int i) {
   return at(i);
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Método constante para referirse a la posición de un elemento
+ * @param i
+ * @return v_[i]
  */
 template<class T> const T& vector_t<T>::at(const int i) const {
   assert(i >= 0 && i < get_size());
@@ -193,18 +186,18 @@ template<class T> const T& vector_t<T>::at(const int i) const {
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Sobrecarga constante del operador []
+ * @param i
+ * @return at(i)
  */
 template<class T> const T& vector_t<T>::operator[](const int i) const {
   return at(i);
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Método de lectura de vectores
+ * @param is
+ * @return void
  */
 template<class T> void vector_t<T>::read(std::istream& is) {
   is >> sz_;
@@ -214,9 +207,9 @@ template<class T> void vector_t<T>::read(std::istream& is) {
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Método de escritura de vectores
+ * @param os
+ * @return void
  */
 template<class T> void vector_t<T>::write(std::ostream& os) const {
   os << get_size() << ": [ ";
@@ -226,9 +219,10 @@ template<class T> void vector_t<T>::write(std::ostream& os) const {
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Sobrecarga del operador >>
+ * @param is
+ * @param v
+ * @return is
  */
 template<class T> std::istream& operator>>(std::istream& is, vector_t<T>& v) {
   v.read(is);
@@ -236,9 +230,10 @@ template<class T> std::istream& operator>>(std::istream& is, vector_t<T>& v) {
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Sobrecarga del operador <<
+ * @param os
+ * @param v
+ * @return os
  */
 template<class T> std::ostream& operator<<(std::ostream& os,
 					   const vector_t<T>& v) {

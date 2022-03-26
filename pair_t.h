@@ -19,49 +19,49 @@ template<class T> class pair_t {
   // constructores
   pair_t(void); 
   pair_t(T, int);
-
-  // destructor
+  // Destructor
   ~pair_t(void);
-
-  // getters & setters
+  // Getters
   T get_val(void) const;
   int get_inx(void) const;
+  // Setters
   void set(T, int);
-
-  // E/S
+  // Métodos de escritura y lectura
   std::istream& read(std::istream& is = std::cin);
   std::ostream& write(std::ostream& os = std::cout) const;
-
  private:
+  // Atributos privados
   T val_;
   int inx_;
 };
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Constructor por defecto de la clase
+ * @param void
+ * @return void
  */
 template<class T> pair_t<T>::pair_t() : val_(), inx_(-1) {}
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Constructor con parámetros de la clase
+ * @param val
+ * @param inx
+ * @return void
  */
 template<class T> pair_t<T>::pair_t(T val, int inx) : val_(val), inx_(inx) {}
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Destructor de la clase
+ * @param void
+ * @return void
  */
 template<class T> pair_t<T>::~pair_t() {}
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Setter de la clase
+ * @param val
+ * @param inx
+ * @return void
  */
 template<class T> void pair_t<T>::set(T val, int inx) {
   val_ = val;
@@ -69,45 +69,46 @@ template<class T> void pair_t<T>::set(T val, int inx) {
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Getter de inx_
+ * @param void
+ * @return inx_
  */
 template<class T> int pair_t<T>::get_inx() const {
   return inx_;
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Getter de val_
+ * @param void
+ * @return val_
  */
 template<class T> T pair_t<T>::get_val() const {
   return val_;
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Método de lectura de pair_t
+ * @param is
+ * @return is
  */
 template<class T> std::istream& pair_t<T>::read(std::istream& is) {
   return is >> inx_ >> val_;
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Método de escritura de pair_t
+ * @param os
+ * @return os
  */
 template<class T> std::ostream& pair_t<T>::write(std::ostream& os) const {
   return os << "(" << inx_ << ":" << val_ << ")";
 }
 
 /**
- * @brief 
- * @param
- * @return
+ * @brief Sobrecarga del operador <<
+ * @param os
+ * @param p
+ * @return os
  */
 template<class T> std::ostream& operator<<(std::ostream& os,
 					   const pair_t<T>& p) {

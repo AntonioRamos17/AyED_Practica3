@@ -235,8 +235,7 @@ template<class T> std::istream& operator>>(std::istream& is, vector_t<T>& v) {
  * @param v
  * @return os
  */
-template<class T> std::ostream& operator<<(std::ostream& os,
-					   const vector_t<T>& v) {
+template<class T> std::ostream& operator<<(std::ostream& os, const vector_t<T>& v) {
   v.write(os);
   return os;
 }

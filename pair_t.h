@@ -16,7 +16,7 @@
 
 template<class T> class pair_t {
  public:
-  // constructores
+  // Constructores
   pair_t(void); 
   pair_t(T, int);
   // Destructor
@@ -110,8 +110,7 @@ template<class T> std::ostream& pair_t<T>::write(std::ostream& os) const {
  * @param p
  * @return os
  */
-template<class T> std::ostream& operator<<(std::ostream& os,
-					   const pair_t<T>& p) {
+template<class T> std::ostream& operator<<(std::ostream& os, const pair_t<T>& p) {
   p.write(os);
   return os;
 }

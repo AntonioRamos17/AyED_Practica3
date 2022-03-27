@@ -48,8 +48,7 @@ class sparse_vector_t {
   pair_vector_t pv_;  // valores + índices
   int nz_;            // nº de valores distintos de cero = tamaño del vector
   int n_;             // tamaño del vector original
-
-  // bool IsNotZero(const double, const double = EPS) const;
+  bool IsNotZero(const double val, const double eps = EPS) const;
 };
 
 /**
@@ -78,9 +77,24 @@ sparse_vector_t::sparse_vector_t(const int n) : pv_(n), nz_(0), n_(n) {
  * @param eps
  * @return void
  */
-sparse_vector_t::sparse_vector_t(const vector_t<double>& v, const double eps)
-    : pv_(), nz_(0), n_(0) {
-  // poner el código aquí
+sparse_vector_t::sparse_vector_t(const vector_t<double>& v, const double eps) : pv_(), nz_(0), n_(0) {
+  n_ = v.get_size();
+  int tamanyo{0};
+  for (int i = 0; i < n_; ++i) {
+    if (fabs(v[i]) > eps) { 
+      ++tamanyo; 
+    }
+  }
+  pv_.resize(tamanyo);
+  int contador2{0};
+  for (int i = 0; i < v.get_size(); ++i) {
+    if (fabs(v[i]) != 0) {
+      pair_t<double> pair{v[i], i};
+      pv_[contador2] = pair;
+      contador2++;
+    }
+  }
+  nz_ = tamanyo;
 }
 
 /**

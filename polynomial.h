@@ -93,7 +93,9 @@ std::ostream& operator<<(std::ostream& os, const Polynomial& p) {
  */
 double Polynomial::Eval(const double x) const {
   double result{0.0};
-  // poner el código aquí
+  for (int contador = 0; contador < get_size(); contador++) {
+    result = result + (at(contador) * (pow(x, contador)));
+  }
   return result;
 }
 
@@ -105,7 +107,34 @@ double Polynomial::Eval(const double x) const {
  */
 bool Polynomial::IsEqual(const Polynomial& pol, const double eps) const {
   bool differents = false;
-  // poner el código aquí
+  int suma{0};
+  if (get_size() > pol.get_size()) {
+    for (int contador = 0; contador < pol.get_size(); ++contador) {
+      if (get_val(contador) != pol.get_val(contador)) {
+        differents = true;
+      }
+    }
+    for (int contador2 = pol.get_size(); contador2 < get_size(); ++contador2){
+      suma += at(contador2);
+      if (suma != 0) {
+        differents = true;
+        break;
+      }
+    }
+  } else {
+    for (int contador = 0; contador < get_size(); ++contador) {
+      if (get_val(contador) != pol.get_val(contador)) {
+        differents = true;
+      }
+    }
+    for (int contador2 = get_size(); contador2 < pol.get_size(); ++contador2){
+      suma += pol.at(contador2);
+      if (suma != 0) {
+        differents = true;
+        break;
+      }
+    }
+  }
   return !differents;
 }
 
@@ -159,7 +188,9 @@ std::ostream& operator<<(std::ostream& os, const SparsePolynomial& p) {
  */
 double SparsePolynomial::Eval(const double x) const {
   double result{0.0};
-  // poner el código aquí
+  for (int contador = 0; contador < get_nz(); contador++) {
+    result = result + (at(contador).get_val() * (pow(x, at(contador).get_inx())));
+  }
   return result;
 }
 
@@ -169,11 +200,14 @@ double SparsePolynomial::Eval(const double x) const {
  * @param eps
  * @return !differents
  */
-// 
-bool SparsePolynomial::IsEqual(const SparsePolynomial& spol
-			       , const double eps) const {
+bool SparsePolynomial::IsEqual(const SparsePolynomial& spol, const double eps) const {
   bool differents = false;
-  // poner el código aquí
+  if (fabs(get_nz() - spol.get_nz()) > eps) { return differents; }
+  for (int contador = 0; contador < get_nz(); ++contador) {
+    if (at(contador).get_val() != spol.at(contador).get_val()) {
+      differents = true;
+    }
+  }
   return !differents;
 }
 
@@ -185,7 +219,17 @@ bool SparsePolynomial::IsEqual(const SparsePolynomial& spol
  */
 bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
   bool differents = false;
-  // poner el código aquí
+  if (get_nz() > pol.get_size()) {
+    differents = true;
+  } else if (get_nz() <= pol.get_size()) {
+    for (int contador = 0, contador2 = 0; contador < get_nz(); ++contador, ++contador2) {
+      if (pol.at(contador2) == 0) {
+        ++contador2;
+      } else if (at(contador).get_val() != pol.get_val(contador2)) {
+        differents = true;
+      }
+    }
+  }
   return !differents;
 }
 

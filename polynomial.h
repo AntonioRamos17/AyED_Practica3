@@ -219,14 +219,13 @@ bool SparsePolynomial::IsEqual(const SparsePolynomial& spol, const double eps) c
  */
 bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
   bool differents = false;
-  if (get_nz() > pol.get_size()) {
-    differents = true;
-  } else if (get_nz() <= pol.get_size()) {
-    for (int contador = 0, contador2 = 0; contador < get_nz(); ++contador, ++contador2) {
-      if (pol.at(contador2) == 0) {
-        ++contador2;
-      } else if (at(contador).get_val() != pol.get_val(contador2)) {
-        differents = true;
+  for (int contador = 0; contador < pol.get_size(); ++contador) {
+    for (int contador2 = 0; contador2 < get_nz(); ++contador2) {
+      if (at(contador2).get_inx() == contador) {
+        if (at(contador2).get_val() != pol.get_val(contador)) {
+          differents = true;
+          break;
+        }
       }
     }
   }

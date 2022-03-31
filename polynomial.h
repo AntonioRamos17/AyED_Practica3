@@ -211,6 +211,16 @@ bool SparsePolynomial::IsEqual(const SparsePolynomial& spol, const double eps) c
   return !differents;
 }
 
+int Conversor(const Polynomial& pol) {
+  int tamanyo_real = 0;
+  for (int i = 0; i < pol.get_size(); ++i) {
+    if (pol.at(i) != 0) {
+      ++tamanyo_real;
+    }
+  }
+  return tamanyo_real;
+}
+
 /**
  * @brief Comparación si son iguales dos polinomios representados por vector disperso y vector denso.
  * @param pol
@@ -219,13 +229,12 @@ bool SparsePolynomial::IsEqual(const SparsePolynomial& spol, const double eps) c
  */
 bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
   bool differents = false;
-  for (int contador = 0; contador < pol.get_size(); ++contador) {
-    for (int contador2 = 0; contador2 < get_nz(); ++contador2) {
-      if (at(contador2).get_inx() == contador) {
-        if (at(contador2).get_val() != pol.get_val(contador)) {
-          differents = true;
-          break;
-        }
+  if (get_nz() != Conversor(pol)) {
+    differents = true;
+  } else { 
+    for (int contador = 0; contador < get_nz(); ++contador) {
+      if (at(contador).get_val() != pol[at(contador).get_inx()]) {
+        differents = true;
       }
     }
   }

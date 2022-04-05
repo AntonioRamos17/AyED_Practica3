@@ -89,5 +89,10 @@ int main() {
   std::cout << "sp3 == p2? " << (sp3.IsEqual(p2) ? "true" : "false") << std::endl;
   std::cout << std::endl;
 
+  /// MÉTODOS ADICIONALES
+  std::cout << "Suma de los índices de sp1: " << sp1.SumaIndices() << std::endl;
+  std::cout << "Suma de los índices de sp2: " << sp2.SumaIndices() << std::endl;
+  std::cout << "Suma de los índices de sp3: " << sp3.SumaIndices() << std::endl;
+  
   return 0;
 }

@@ -49,6 +49,9 @@ class SparsePolynomial : public sparse_vector_t {
   double Eval(const double) const;
   bool IsEqual(const SparsePolynomial&, const double = EPS) const;
   bool IsEqual(const Polynomial&, const double = EPS) const;
+
+  /// Métodos adicionales
+  int SumaIndices() const;
 };
 
 /// Métodos de entrada/salida
@@ -239,6 +242,21 @@ bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
     }
   }
   return !differents;
+}
+
+/// MÉTODOS ADICIONALES
+
+/**
+ * @brief Suma los índices de un polinomio disperso
+ * @param pol
+ * @return suma
+ */
+int SparsePolynomial::SumaIndices() const {
+  int suma{0};
+  for (int i = 0; i < get_nz(); ++i) {
+    suma += at(i).get_inx();
+  }
+  return suma;
 }
 
 

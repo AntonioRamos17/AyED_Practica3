@@ -346,7 +346,7 @@ Polynomial Polynomial::RestaPolinomios(const Polynomial& pol) {
       result.at(j) = at(j) - pol.at(j);
     }
     for (int z = j; z < get_size(); ++z) {
-      result.at(z) = pol.at(z);
+      result.at(z) = -pol.at(z);
     }
   }
   return result;

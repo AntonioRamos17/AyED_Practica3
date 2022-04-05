@@ -34,6 +34,7 @@ class Polynomial : public vector_t<double> {
 
   /// MÉTODOS ADICIONALES
   Polynomial SumaPolinomios(const Polynomial& pol);
+  double SumaCoeficientes();
 };
 
 
@@ -264,8 +265,8 @@ int SparsePolynomial::SumaIndices() const {
 
 /**
  * @brief Suma dos polinomios
- * @param void
- * @return suma
+ * @param pol
+ * @return result
  */
 Polynomial Polynomial::SumaPolinomios(const Polynomial& pol) {
   Polynomial result;
@@ -282,5 +283,19 @@ Polynomial Polynomial::SumaPolinomios(const Polynomial& pol) {
   }
   return result;
 }
+
+/**
+ * @brief Suma los coeficientes de un polinomio
+ * @param void
+ * @return suma
+ */
+double Polynomial::SumaCoeficientes() {
+  double suma{0.0};
+  for (int i = 0; i < get_size(); ++i) {
+    suma += at(i);
+  }
+  return suma;
+}
+
 
 #endif  /// POLYNOMIAL_H_

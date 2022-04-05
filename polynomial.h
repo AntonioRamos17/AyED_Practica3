@@ -12,46 +12,46 @@
 #define POLYNOMIAL_H_
 
 #include <iostream>
-#include <math.h>  // fabs, pow
+#include <math.h>  /// fabs, pow
 
 #include "vector_t.h"
 #include "sparse_vector_t.h"
 
-// Clase para polinomios basados en vectores densos de doubles
+/// Clase para polinomios basados en vectores densos de doubles
 class Polynomial : public vector_t<double> {
  public:
-  // Constructores
+  /// Constructores
   Polynomial(const int n = 0) : vector_t<double>(n) {};
   Polynomial(const Polynomial& pol)
       : vector_t<double>(pol) {}; // constructor de copia
-  // Destructor
+  /// Destructor
   ~Polynomial() {};
-  // Método de escritura de polinomios
+  /// Método de escritura de polinomios
   void Write(std::ostream& = std::cout, const double eps = EPS) const;
-  // Operaciones y comparaciones
+  /// Operaciones y comparaciones
   double Eval(const double) const;
   bool IsEqual(const Polynomial&, const double = EPS) const;
  };
 
 
-// Clase para polinomios basados en vectores dispersos
+/// Clase para polinomios basados en vectores dispersos
 class SparsePolynomial : public sparse_vector_t {
  public:
-  // Constructores
+  /// Constructores
   SparsePolynomial(const int n = 0) : sparse_vector_t(n) {};
   SparsePolynomial(const Polynomial& pol) : sparse_vector_t(pol) {};
   SparsePolynomial(const SparsePolynomial&);  // constructor de copia
-  // Destructor
+  /// Destructor
   ~SparsePolynomial() {};
-  // Método de escritura de polinomios
+  /// Método de escritura de polinomios
   void Write(std::ostream& = std::cout) const;
-  // Operaciones y comparaciones
+  /// Operaciones y comparaciones
   double Eval(const double) const;
   bool IsEqual(const SparsePolynomial&, const double = EPS) const;
   bool IsEqual(const Polynomial&, const double = EPS) const;
 };
 
-// Métodos de entrada/salida
+/// Métodos de entrada/salida
 
 /**
  * @brief Método de escritura de polinomios
@@ -84,7 +84,7 @@ std::ostream& operator<<(std::ostream& os, const Polynomial& p) {
   return os;
 }
 
-// Operaciones con polinomios
+/// Operaciones con polinomios
 
 /**
  * @brief Evaluación de un polinomio representado por vector denso
@@ -147,7 +147,7 @@ SparsePolynomial::SparsePolynomial(const SparsePolynomial& spol) {
   *this = spol;   // se invoca directamente al operator=
 }
 
-// Métodos de entrada/salida polinomio escaso
+/// Métodos de entrada/salida polinomio escaso
 
 /**
  * @brief Método de escritura de polinomios escasos
@@ -179,7 +179,7 @@ std::ostream& operator<<(std::ostream& os, const SparsePolynomial& p) {
   return os;
 }
 
-// Operaciones con polinomios escasos
+/// Operaciones con polinomios escasos
 
 /**
  * @brief Evaluación de un polinomio representado por vector disperso 
@@ -242,4 +242,4 @@ bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
 }
 
 
-#endif  // POLYNOMIAL_H_
+#endif  /// POLYNOMIAL_H_

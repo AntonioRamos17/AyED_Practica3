@@ -23,14 +23,14 @@ int main() {
   std::cout << "p3= " << p3;
   std::cout << std::endl;
 
-   // Fase II
+  /// Fase II
   SparsePolynomial sp1(p1), sp2(p2), sp3(p3);
   std::cout << "sp1= " << sp1;
   std::cout << "sp2= " << sp2;
   std::cout << "sp3= " << sp3;
   std::cout << std::endl;
 
-  // Fase III
+  /// Fase III
   double x1, x2, x3;
   std::cin >> x1 >> x2 >> x3;
   std::cout << "p1(" << x1 << ")= " << p1.Eval(x1) << std::endl;
@@ -55,7 +55,7 @@ int main() {
   std::cout << "sp3(" << x3 << ")= " << sp3.Eval(x3) << std::endl;
   std::cout << std::endl;
 
-  // Fase IV
+  /// Fase IV
   std::cout << "p1 == p1? " << (p1.IsEqual(p1) ? "true" : "false") << std::endl;
   std::cout << "p2 == p2? " << (p2.IsEqual(p2) ? "true" : "false") << std::endl;
   std::cout << "p3 == p3? " << (p3.IsEqual(p3) ? "true" : "false") << std::endl;

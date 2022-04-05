@@ -16,34 +16,34 @@
 
 template<class T> class vector_t {
  public:
-  // Constructores
+  /// Constructores
   vector_t(const int = 0);
   vector_t(const vector_t&); // constructor de copia
-  // Sobrecarga del operador de asignación
+  /// Sobrecarga del operador de asignación
   vector_t<T>& operator=(const vector_t<T>&);
   // Destructor
   ~vector_t();
-  // Getters
+  /// Getters
   T get_val(const int) const;
   int get_size(void) const;
-  // Setters
+  /// Setters
   void set_val(const int, const T);
   // Getters-setters
   T& at(const int);
   T& operator[](const int);
-  // Getters constantes
+  /// Getters constantes
   const T& at(const int) const;
   const T& operator[](const int) const;
-  // Redimensionado del vector
+  /// Redimensionado del vector
   void resize(const int);
   // Métodos de escritura y lectura del vector
   void read(std::istream& = std::cin);
   void write(std::ostream& = std::cout) const;
  private:
-  // Atributos privados
+  /// Atributos privados
   T *v_;
   int sz_;
-  // Métodos privados
+  /// Métodos privados
   void build(void);
   void destroy(void);
 };

@@ -24,30 +24,30 @@ typedef vector_t<pair_double_t> pair_vector_t;
 
 class sparse_vector_t {
  public:
-  // Constructores
+  /// Constructores
   sparse_vector_t(const int = 0);
   sparse_vector_t(const vector_t<double>&,
 		  const double = EPS); // constructor normal
   sparse_vector_t(const sparse_vector_t&);  // constructor de copia
-  // Sobrecarga del operador de asignación
+  /// Sobrecarga del operador de asignación
   sparse_vector_t& operator=(const sparse_vector_t&);
-  // Destructor
+  /// Destructor
   ~sparse_vector_t();
-  // Getters
+  /// Getters
   int get_nz(void) const;
   int get_n(void) const;
-  // Getters-Setters
+  /// Getters-Setters
   pair_double_t& at(const int);
   pair_double_t& operator[](const int);
-  // Getters constantes
+  /// Getters constantes
   const pair_double_t& at(const int) const;
   const pair_double_t& operator[](const int) const;
-  // Método de escritura de vectores escasos
+  /// Método de escritura de vectores escasos
   void write(std::ostream& = std::cout) const;
  private:
-  pair_vector_t pv_;  // valores + índices
-  int nz_;            // nº de valores distintos de cero = tamaño del vector
-  int n_;             // tamaño del vector original
+  pair_vector_t pv_;  /// valores + índices
+  int nz_;            /// nº de valores distintos de cero = tamaño del vector
+  int n_;             /// tamaño del vector original
   bool IsNotZero(const double val, const double eps = EPS) const;
 };
 
@@ -69,7 +69,7 @@ bool IsNotZero(const double val, const double eps = EPS) {
 sparse_vector_t::sparse_vector_t(const int n) : pv_(n), nz_(0), n_(n) {
 }
 
-// FASE II
+/// FASE II
 
 /**
  * @brief Constructor con parámetros de la clase
@@ -183,7 +183,7 @@ const pair_double_t& sparse_vector_t::operator[](const int i) const {
   return at(i);
 }
 
-// Métodos de entrada/salida
+/// Métodos de entrada/salida
 
 /**
  * @brief Método de escritura de vectores escasos

@@ -16,21 +16,21 @@
 
 template<class T> class pair_t {
  public:
-  // Constructores
+  /// Constructores
   pair_t(void); 
   pair_t(T, int);
-  // Destructor
+  /// Destructor
   ~pair_t(void);
-  // Getters
+  /// Getters
   T get_val(void) const;
   int get_inx(void) const;
-  // Setters
+  /// Setters
   void set(T, int);
-  // Métodos de escritura y lectura
+  /// Métodos de escritura y lectura
   std::istream& read(std::istream& is = std::cin);
   std::ostream& write(std::ostream& os = std::cout) const;
  private:
-  // Atributos privados
+  /// Atributos privados
   T val_;
   int inx_;
 };
@@ -115,4 +115,4 @@ template<class T> std::ostream& operator<<(std::ostream& os, const pair_t<T>& p)
   return os;
 }
 
-#endif  // PAIRT_H_
+#endif  /// PAIRT_H_

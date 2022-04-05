@@ -103,6 +103,7 @@ int main() {
   /// Suma de dos polynomios
   std::cout << "p1 + p2 = " << p1.SumaPolinomios(p2);
   std::cout << "p2 + p3 = " << p2.SumaPolinomios(p3);
+  std::cout << "p1 + p3 = " << p1.SumaPolinomios(p3);
   std::cout << std::endl;
 
   /// Suma de coeficientes de polinomios

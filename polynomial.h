@@ -251,6 +251,11 @@ bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
   return !differents;
 }
 
+
+
+
+
+
 /// MÉTODOS ADICIONALES
 
 /**
@@ -273,23 +278,15 @@ int SparsePolynomial::SumaIndices() const {
  */
 Polynomial Polynomial::SumaPolinomios(const Polynomial& pol) {
   Polynomial result;
-  if (get_size() >= pol.get_size()) {
-    result.resize(get_size());
-    int i{0};
-    for (i = 0; i < pol.get_size(); ++i) {
-      result.at(i) = at(i) + pol.at(i);
+  if (get_size() > pol.get_size()) {
+    result = *this;
+    for (int i = 0; i < pol.get_size(); ++i) {
+      result.at(i) += pol.at(i);
     }
-    for (int k = i; k < get_size(); ++k) {
-      result.at(k) = at(k);
-    }
-  } else if (pol.get_size() > get_size()) {
-    result.resize(pol.get_size());
-    int j{0};
-    for ( j = 0; j < get_size(); ++j) {
-      result.at(j) = at(j) + pol.at(j);
-    }
-    for (int z = j; z < get_size(); ++z) {
-      result.at(z) = pol.at(z);
+  } else {
+    result = pol;
+    for (int j = 0; j < get_size(); ++j) {
+      result.at(j) += at(j);
     }
   }
   return result;

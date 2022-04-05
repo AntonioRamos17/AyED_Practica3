@@ -36,6 +36,7 @@ class Polynomial : public vector_t<double> {
   Polynomial SumaPolinomios(const Polynomial& pol);
   double SumaCoeficientes();
   Polynomial RestaPolinomios(const Polynomial& pol);
+  Polynomial Multiplicacion(const int& escalar);
 };
 
 
@@ -272,7 +273,7 @@ int SparsePolynomial::SumaIndices() const {
  */
 Polynomial Polynomial::SumaPolinomios(const Polynomial& pol) {
   Polynomial result;
-  if (get_size() > pol.get_size()) {
+  if (get_size() >= pol.get_size()) {
     result.resize(get_size());
     for (int i = 0; i < pol.get_size(); ++i) {
       result.at(i) = at(i) + pol.at(i);
@@ -321,7 +322,7 @@ double SparsePolynomial::MostrarCoeficiente(const int& n) {
  */
 Polynomial Polynomial::RestaPolinomios(const Polynomial& pol) {
   Polynomial result;
-  if (get_size() > pol.get_size()) {
+  if (get_size() >= pol.get_size()) {
     result.resize(get_size());
     for (int i = 0; i < pol.get_size(); ++i) {
       result.at(i) = at(i) - pol.at(i);
@@ -335,4 +336,17 @@ Polynomial Polynomial::RestaPolinomios(const Polynomial& pol) {
   return result;
 }
 
+/**
+ * @brief Multiplicación de un escalar por un polinomio
+ * @param n
+ * @return result
+ */
+Polynomial Polynomial::Multiplicacion(const int& escalar) {
+  Polynomial result;
+  result.resize(get_size());
+  for (int i = 0; i < get_size(); ++i) {
+    result.at(i) = escalar * at(i);
+  }
+  return result;
+}
 #endif  /// POLYNOMIAL_H_

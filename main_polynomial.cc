@@ -121,6 +121,13 @@ int main() {
   std::cout << "p1 - p2 = " << p1.RestaPolinomios(p2);
   std::cout << "p2 - p3 = " << p2.RestaPolinomios(p3);
   std::cout << std::endl;
-  
+  std::cout << std::endl;
+
+  /// Multiplicación de un escalar por un polinomio
+  std::cout << "p1 x 5 = " << p1.Multiplicacion(5) << std::endl;
+  std::cout << "p2 x 6 = " << p2.Multiplicacion(6) << std::endl;
+  std::cout << "p3 x 3 = " << p3.Multiplicacion(3) << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

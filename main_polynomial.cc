@@ -117,5 +117,10 @@ int main() {
   std::cout << "El coeficiente de sp3 cuyo índice es 9 es: " << sp3.MostrarCoeficiente(9) << std::endl;
   std::cout << std::endl;
 
+  /// Resta de polinomios
+  std::cout << "p1 - p2 = " << p1.RestaPolinomios(p2);
+  std::cout << "p2 - p3 = " << p2.RestaPolinomios(p3);
+  std::cout << std::endl;
+  
   return 0;
 }

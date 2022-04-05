@@ -56,6 +56,7 @@ class SparsePolynomial : public sparse_vector_t {
 
   /// MÉTODOS ADICIONALES
   int SumaIndices() const;
+  double MostrarCoeficiente(const int& n);
 };
 
 /// Métodos de entrada/salida
@@ -297,5 +298,19 @@ double Polynomial::SumaCoeficientes() {
   return suma;
 }
 
+/**
+ * @brief Muestra el coeficiente de un polinomio disperso dado su índice
+ * @param i
+ * @return numero
+ */
+double SparsePolynomial::MostrarCoeficiente(const int& n) {
+  double numero{0};
+  for (int i = 0; i < get_nz(); ++i) {
+    if (at(i).get_inx() == n) {
+      numero = at(i).get_val();
+    }
+  }
+  return numero;
+}
 
 #endif  /// POLYNOMIAL_H_

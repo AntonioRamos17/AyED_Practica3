@@ -111,5 +111,11 @@ int main() {
   std::cout << "La suma de los coeficientes de p3 es: " << p3.SumaCoeficientes() << std::endl;
   std::cout << std::endl;
 
+  /// Mostrar el coeficiente dado el índice
+  std::cout << "El coeficiente de sp1 cuyo índice es 5 es: " << sp1.MostrarCoeficiente(5) << std::endl;
+  std::cout << "El coeficiente de sp2 cuyo índice es 8 es: " << sp2.MostrarCoeficiente(8) << std::endl;
+  std::cout << "El coeficiente de sp3 cuyo índice es 9 es: " << sp3.MostrarCoeficiente(9) << std::endl;
+  std::cout << std::endl;
+
   return 0;
 }

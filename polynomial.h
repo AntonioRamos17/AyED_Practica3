@@ -31,7 +31,10 @@ class Polynomial : public vector_t<double> {
   /// Operaciones y comparaciones
   double Eval(const double) const;
   bool IsEqual(const Polynomial&, const double = EPS) const;
- };
+
+  /// MÉTODOS ADICIONALES
+  Polynomial SumaPolinomios(const Polynomial& pol);
+};
 
 
 /// Clase para polinomios basados en vectores dispersos
@@ -50,7 +53,7 @@ class SparsePolynomial : public sparse_vector_t {
   bool IsEqual(const SparsePolynomial&, const double = EPS) const;
   bool IsEqual(const Polynomial&, const double = EPS) const;
 
-  /// Métodos adicionales
+  /// MÉTODOS ADICIONALES
   int SumaIndices() const;
 };
 
@@ -248,7 +251,7 @@ bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
 
 /**
  * @brief Suma los índices de un polinomio disperso
- * @param pol
+ * @param void
  * @return suma
  */
 int SparsePolynomial::SumaIndices() const {
@@ -259,5 +262,25 @@ int SparsePolynomial::SumaIndices() const {
   return suma;
 }
 
+/**
+ * @brief Suma dos polinomios
+ * @param void
+ * @return suma
+ */
+Polynomial Polynomial::SumaPolinomios(const Polynomial& pol) {
+  Polynomial result;
+  if (get_size() > pol.get_size()) {
+    result.resize(get_size());
+    for (int i = 0; i < pol.get_size(); ++i) {
+      result.at(i) = at(i) + pol.at(i);
+    }
+  } else if (pol.get_size() > get_size()) {
+    result.resize(pol.get_size());
+    for (int j = 0; j < get_size(); ++j) {
+      result.at(j) = at(j) + pol.at(j);
+    }
+  }
+  return result;
+}
 
 #endif  /// POLYNOMIAL_H_

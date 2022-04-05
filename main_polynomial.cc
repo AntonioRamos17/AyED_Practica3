@@ -90,9 +90,18 @@ int main() {
   std::cout << std::endl;
 
   /// MÉTODOS ADICIONALES
+
+  /// Suma de los índices de un sparse_polynomial
   std::cout << "Suma de los índices de sp1: " << sp1.SumaIndices() << std::endl;
   std::cout << "Suma de los índices de sp2: " << sp2.SumaIndices() << std::endl;
   std::cout << "Suma de los índices de sp3: " << sp3.SumaIndices() << std::endl;
-  
+  std::cout << std::endl;
+
+  /// Suma de dos polynomios
+  std::cout << "p1 + p2 = " << p1.SumaPolinomios(p2);
+  std::cout << "p2 + p3 = " << p2.SumaPolinomios(p3);
+  std::cout << std::endl;
+
+
   return 0;
 }

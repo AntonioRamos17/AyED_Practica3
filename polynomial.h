@@ -37,6 +37,7 @@ class Polynomial : public vector_t<double> {
   double SumaCoeficientes();
   Polynomial RestaPolinomios(const Polynomial& pol);
   Polynomial Multiplicacion(const int& escalar);
+  void CadenaConsecutiva() const;
 };
 
 
@@ -376,8 +377,22 @@ void SparsePolynomial::MuestraCeros() const {
     v.at(at(i).get_inx()) = 1;
   }
   for (int j = 0; j < v.get_size(); ++j) {
-    if (v.at(j) == 0){
+    if (v.at(j) == 0) {
       std::cout <<  "0x^" << j << " ";
+    }
+  }
+}
+
+/**
+ * @brief Método que muestra índices consecutivos de un polinomio
+ * @param void
+ * @return void
+ */
+void Polynomial::CadenaConsecutiva() const {
+  for (int i = 1; i < get_size(); ++i) {
+    if (at(i - 1) != 0 && at(i) != 0) {
+      std::cout << get_val(i - 1) << "x^" << i - 1 << "<-->";
+      std::cout << get_val(i) << "x^" << i << std::endl;
     }
   }
 }

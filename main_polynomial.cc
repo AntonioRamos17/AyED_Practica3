@@ -136,6 +136,17 @@ int main() {
   sp2.MuestraCeros();
   std::cout << std::endl;
   sp3.MuestraCeros();
+  std::cout << std::endl << std::endl;
+
+  /// Muestra los coeficientes cuyos índices son números consecutivos
+  std::cout << "Elementos consecutivos de p1" << std::endl;
+  p1.CadenaConsecutiva();
+  std::cout << std::endl;
+  std::cout << "Elementos consecutivos de p2" << std::endl;
+  p2.CadenaConsecutiva();
+  std::cout << std::endl;
+  std::cout << "Elementos consecutivos de p3" << std::endl;
+  p3.CadenaConsecutiva();
   std::cout << std::endl;
   
   return 0;

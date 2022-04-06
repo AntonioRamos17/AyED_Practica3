@@ -377,7 +377,7 @@ void SparsePolynomial::MuestraCeros() const {
   }
   for (int j = 0; j < v.get_size(); ++j) {
     if (v.at(j) == 0){
-      std::cout <<  "Cero en: " << j << std::endl;
+      std::cout <<  "0x^" << j << " ";
     }
   }
 }

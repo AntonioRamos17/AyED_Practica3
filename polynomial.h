@@ -382,6 +382,4 @@ void SparsePolynomial::MuestraCeros() const {
   }
 }
 
-
-
 #endif  /// POLYNOMIAL_H_

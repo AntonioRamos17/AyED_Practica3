@@ -59,6 +59,7 @@ class SparsePolynomial : public sparse_vector_t {
   /// MÉTODOS ADICIONALES
   int SumaIndices() const;
   double MostrarCoeficiente(const int& n);
+  void MuestraCeros() const;
 };
 
 /// Métodos de entrada/salida
@@ -362,4 +363,25 @@ Polynomial Polynomial::Multiplicacion(const int& escalar) {
   }
   return result;
 }
+
+/**
+ * @brief Método que muestra los 0 de un polinomio disperso
+ * @param void
+ * @return result
+ */
+void SparsePolynomial::MuestraCeros() const {
+  vector_t<int> v;
+  v.resize(get_n());
+  for (int i = 0; i < get_nz(); ++i) {
+    v.at(at(i).get_inx()) = 1;
+  }
+  for (int j = 0; j < v.get_size(); ++j) {
+    if (v.at(j) == 0){
+      std::cout <<  "Cero en: " << j << std::endl;
+    }
+  }
+}
+
+
+
 #endif  /// POLYNOMIAL_H_

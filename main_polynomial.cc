@@ -130,5 +130,13 @@ int main() {
   std::cout << "p3 x 3 = " << p3.Multiplicacion(3) << std::endl;
   std::cout << std::endl;
 
+  /// Muestra los 0 de un polinomio disperso
+  sp1.MuestraCeros();
+  std::cout << std::endl;
+  sp2.MuestraCeros();
+  std::cout << std::endl;
+  sp3.MuestraCeros();
+  std::cout << std::endl;
+  
   return 0;
 }
